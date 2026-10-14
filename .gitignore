@@ -1,0 +1,13 @@
+
+.env
+.env.*
+!.env.example
+
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+uploads/
+faiss_index.bin
+faiss_meta.json
