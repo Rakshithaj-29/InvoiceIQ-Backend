@@ -28,8 +28,7 @@ pwd_context = CryptContext(
 def verify_token(
     credentials: HTTPAuthorizationCredentials = Depends(security)
 ):  
-    print("===================================")
-    print("TOKEN RECEIVED:", credentials.credentials)
+    
 
     try:
         payload = jwt.decode(
@@ -37,7 +36,7 @@ def verify_token(
             SECRET_KEY,
             algorithms=[ALGORITHM]
         )
-        print("payload:",payload)
+        
         return payload
 
     except JWTError as e:
@@ -52,13 +51,13 @@ def verify_company_token(
     credentials: HTTPAuthorizationCredentials = Depends(company_scheme)
 ):
     try:
-        print("TOKEN:", credentials.credentials)
+        
         payload = jwt.decode(
             credentials.credentials,
             SECRET_KEY,
             algorithms=[ALGORITHM]
         )
-        print("PAYLOAD:",payload)
+       
         return {
            "email": payload["sub"],
            "company_name":payload["company_name"]
